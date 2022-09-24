@@ -1,6 +1,9 @@
 import discord
+import os
 from discord.ext import commands
 from discord.ui import View
+from dotenv import load_dotenv
+load_dotenv()
 intents = discord.Intents().all()
 
 bot=commands.Bot(command_prefix="°",description="Bot de Flavie", intents=intents)
@@ -58,6 +61,6 @@ async def button(ctx):
     style = discord.ButtonStyle.red  # The button will be gray in color
     item = discord.ui.Button(style=style, label="Riptide", url="https://www.youtube.com/watch?v=lYoWuaw5nSk")  # Create an item to pass into the view class.
     view.add_item(item=item)  # Add that item into the view class
-    await ctx.send("This message has buttons!", view=view)  # Send your message with a button.
+    await ctx.send(view=view)  # Send your message with a button.
 #on demarre le bot
-bot.run("MTAyMjUyNzg0ODAwODkyNTIzNg.GB_6Z1.aOCmJOIGmothq8MG7j1JnOpOmjiCxeELJl2jiI")
+bot.run(os.getenv("TOKEN"))
